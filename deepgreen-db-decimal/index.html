@@ -16,9 +16,9 @@
 
 
 
-<link rel="stylesheet" href=css/app.css>
+<link rel="stylesheet" href=/css/app.css>
 
-<link rel="icon" type="image/png" href=img/favicon.png>
+<link rel="icon" type="image/png" href=/img/favicon.png>
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
@@ -34,26 +34,26 @@
     <div class="large-12 columns">
       <br/>
       <nav>
-        <a href=''><img src="img/logo.png" alt="Vitesse Data"/></a>
+        <a href=/><img src="../img/logo.png" alt="Vitesse Data"/></a>
         <span class="float-right">
       <ul class="dropdown menu" data-dropdown-menu>
           <li><a>PRODUCTS</a>
             <ul class="menu">
-              <li><a href="vitesse-db">Vitesse DB</a></li>
-              <li><a href="deepgreen-db">Deepgreen DB</a></li>
-              <li><a href="loftd">Loft Server</a></li>
+              <li><a href=/vitesse-db>Vitesse DB</a></li>
+              <li><a href=/deepgreen-db>Deepgreen DB</a></li>
+              <li><a href=/loftd>Loft Server</a></li>
             </ul>
           </li>
           <li><a>SOLUTIONS</a>
             <ul class="menu">
-              <li><a href="solution-postgres">Enhanced Postgres</a></li>
-              <li><a href="solution-data-mart">Data Mart</a></li>
-              <li><a href="solution-dw">Small 100TB Warehouse</a></li>
-              <li><a href="solution-mpp">Large Scale-Out Warehouse</a></li>
+              <li><a href=/solution-postgres>Enhanced Postgres</a></li>
+              <li><a href=/solution-data-mart>Data Mart</a></li>
+              <li><a href=/solution-dw>Small 100TB Warehouse</a></li>
+              <li><a href=/solution-mpp>Large Scale-Out Warehouse</a></li>
             </ul>
           </li>
-          <li><a href="faq">FAQ</a></li>
-          <li><a href="support">SUPPORT</a></li>
+          <li><a href=/faq>FAQ</a></li>
+          <li><a href=/support>SUPPORT</a></li>
       </ul>
         </span>
       </nav>
@@ -67,17 +67,17 @@
 <div class="row">
   <div class="large-12 columns">
     <ul class="sub-nav">
-
-
+      
+     
       <li class="sub-nav-title">Deepgreen&nbsp;DB</li>
-      <li ><a href="deepgreen-db">Performance</a></li>
-
-      <li
+      <li ><a href=/deepgreen-db>Performance</a></li>
+      
+      <li 
       class="active"
-      ><a href="deepgreen-db-gpdb-compatibility">Features</a></li>
-
-      <li ><a href="deepgreen-db-download">Download</a></li>
-      <li ><a href="deepgreen-db-beta">Beta</a></li>
+      ><a href="../deepgreen-db-gpdb-compatibility">Features</a></li>
+      
+      <li ><a href="../deepgreen-db-download">Download</a></li>
+      <li ><a href="../deepgreen-db-beta">Beta</a></li>
     </ul>
   </div>
 </div>
@@ -86,31 +86,31 @@
 
 <div class="row">
   <div class="large-3 medium-3 columns">
-
+  
   <ul class="left-nav">
-
-
-
+  
+  
+  
   <li >
-    <a href="deepgreen-db-gpdb-compatibility">100% GPDB</a>
+    <a href="../deepgreen-db-gpdb-compatibility">100% GPDB</a>
   </li>
   <li class="active">
-    <a href="deepgreen-db-decimal">Fast Decimal</a>
+    <a href="../deepgreen-db-decimal">Fast Decimal</a>
   </li>
   <li >
-    <a href="deepgreen-db-json">JSON</a>
+    <a href="../deepgreen-db-json">JSON</a>
   </li>
   <li >
-    <a href="deepgreen-db-z">Compression</a></li>
+    <a href="../deepgreen-db-z">Compression</a></li>
   <li >
-  <a href="deepgreen-db-sample">Sampling</a></li>
+  <a href="../deepgreen-db-sample">Sampling</a></li>
 
 </ul>
 
-
+  
   </div>
   <div class="large-9 medium-9 columns">
-
+    
         <h3>Decimal64 / Decimal128</h3>
 
 <p><em>New in version 16.04.</em></p>
@@ -138,7 +138,7 @@ decimal64 and decimal128 types and functions into the database.</p>
     characteristics of these types. The session below shows that
     the simple query <code>select avg(x), sum(2*x) from table</code>
     over a million records takes:
-
+    
     <ul style="margin-left: 2em">
       <li> 23 ms when x is 64-bit float;</li>
       <li> 38 ms when x is decimal64;</li>
@@ -150,32 +150,32 @@ decimal64 and decimal128 types and functions into the database.</p>
     </ul>
 
 </p>
-
+    
 <div class="panel callout radius">
       <pre>
 % psql test
 test=# drop table if exists tt;
 DROP TABLE
 test=# create table tt(
-ii bigint,
+ii bigint, 
  f64 double precision,
-d64 decimal64,
-d128 decimal128,
+d64 decimal64, 
+d128 decimal128, 
 n numeric(15, 3))
 distributed randomly;
 CREATE TABLE
-test=# insert into tt
-select i,
-    i + 0.123,
-    (i + 0.123)::decimal64,
-    (i + 0.123)::decimal128,
-    i + 0.123
+test=# insert into tt 
+select i, 
+    i + 0.123, 
+    (i + 0.123)::decimal64, 
+    (i + 0.123)::decimal128, 
+    i + 0.123 
 from generate_series(1, 1000000) i;
 INSERT 0 1000000
 test=# \timing on
 Timing is on.
 test=# select count(*) from tt;
-count
+count  
 ---------
  1000000
 (1 row)
@@ -185,21 +185,21 @@ test=# set vitesse.enable=1;
 SET
 Time: 1.888 ms
 test=# select avg(f64),sum(2*f64) from tt;
-   avg       |       sum
+   avg       |       sum        
 -----------------+------------------
  500000.62300062 | 1000001246001.24
 (1 row)
 
 Time: 22.867 ms
 test=# select avg(d64),sum(2*d64) from tt;
-avg     |        sum
+avg     |        sum        
 ------------+-------------------
  500000.623 | 1000001246000.000
 (1 row)
 
 Time: 37.752 ms
 test=# select avg(d128),sum(2*d128) from tt;
-avg     |        sum
+avg     |        sum        
 ------------+-------------------
  500000.623 | 1000001246000.000
 (1 row)
@@ -209,7 +209,7 @@ test=# set vitesse.enable=1;
 SET
 Time: 1.704 ms
 test=# select avg(n),sum(2*n) from tt;
-     avg         |        sum
+     avg         |        sum        
 ---------------------+-------------------
  500000.623000000000 | 1000001246000.000
 (1 row)
@@ -219,14 +219,14 @@ test=# set vitesse.enable=0;
 SET
 Time: 1.633 ms
 test=# select avg(n),sum(2*n) from tt;
-     avg         |        sum
+     avg         |        sum        
 ---------------------+-------------------
  500000.623000000000 | 1000001246000.000
 (1 row)
 
 Time: 206.458 ms</pre>
     </div>
-
+      
 
   </div>
 </div>

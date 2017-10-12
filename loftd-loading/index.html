@@ -16,9 +16,9 @@
 
 
 
-<link rel="stylesheet" href=css/app.css>
+<link rel="stylesheet" href=/css/app.css>
 
-<link rel="icon" type="image/png" href=img/favicon.png>
+<link rel="icon" type="image/png" href=/img/favicon.png>
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
@@ -34,26 +34,26 @@
     <div class="large-12 columns">
       <br/>
       <nav>
-        <a href=''><img src="img/logo.png" alt="Vitesse Data"/></a>
+        <a href=/><img src="../img/logo.png" alt="Vitesse Data"/></a>
         <span class="float-right">
       <ul class="dropdown menu" data-dropdown-menu>
           <li><a>PRODUCTS</a>
             <ul class="menu">
-              <li><a href="vitesse-db">Vitesse DB</a></li>
-              <li><a href="deepgreen-db">Deepgreen DB</a></li>
-              <li><a href="loftd">Loft Server</a></li>
+              <li><a href=/vitesse-db>Vitesse DB</a></li>
+              <li><a href=/deepgreen-db>Deepgreen DB</a></li>
+              <li><a href=/loftd>Loft Server</a></li>
             </ul>
           </li>
           <li><a>SOLUTIONS</a>
             <ul class="menu">
-              <li><a href="solution-postgres">Enhanced Postgres</a></li>
-              <li><a href="solution-data-mart">Data Mart</a></li>
-              <li><a href="solution-dw">Small 100TB Warehouse</a></li>
-              <li><a href="solution-mpp">Large Scale-Out Warehouse</a></li>
+              <li><a href=/solution-postgres>Enhanced Postgres</a></li>
+              <li><a href=/solution-data-mart>Data Mart</a></li>
+              <li><a href=/solution-dw>Small 100TB Warehouse</a></li>
+              <li><a href=/solution-mpp>Large Scale-Out Warehouse</a></li>
             </ul>
           </li>
-          <li><a href="faq">FAQ</a></li>
-          <li><a href="support">SUPPORT</a></li>
+          <li><a href=/faq>FAQ</a></li>
+          <li><a href=/support>SUPPORT</a></li>
       </ul>
         </span>
       </nav>
@@ -64,29 +64,29 @@
 
 
 
-
+ 
     <div class="row">
       <div class="large-12 columns">
         <ul class="sub-nav">
-
+         
           <li class="sub-nav-title">Loft Server</li>
-          <li ><a href="loftd">Setup</a></li>
-          <li class="active"><a href="loftd-loading">Loading&nbsp;Data</a></li>
-          <li ><a href="loftd-ddl">Table&nbsp;Definition</a></li>
-          <li ><a href="loftd-replica">Replication</a></li>
-          <li ><a href="loftd-download">Download</a></li>
+          <li ><a href=/loftd>Setup</a></li>
+          <li class="active"><a href="../loftd-loading">Loading&nbsp;Data</a></li>
+          <li ><a href="../loftd-ddl">Table&nbsp;Definition</a></li>
+          <li ><a href="../loftd-replica">Replication</a></li>
+          <li ><a href="../loftd-download">Download</a></li>
 
         </ul>
       </div>
     </div>
 
 
-
+  
         <div class="row">
   <div class="large-1 medium-1 columns">
     <br/>
   </div>
-
+  
   <div class="large-9 medium-10 columns">
     <br/>
 
@@ -106,7 +106,7 @@
 
     <p>The <code>-D</code> flag specifies the base directory of where
       to put the data files. Continuing with our example in
-      the <a href="loftd">introduction</a>, this would
+      the <a href="../loftd">introduction</a>, this would
       be <code>/data/loftdata/base</code>. </p>
 
     <p>SCHEDULENAME is just an arbitrary job-schedule-name as
@@ -127,7 +127,7 @@
 
     <p>The source-clause specifies the origin of the data. It is of
       the form:</p>
-
+    
     <div class="panel callout radius">
       <pre>src(host, port, dbuser, dbname, schema, tablename)
 
@@ -158,7 +158,7 @@ e.g. dst(glog, public, weblog) or dst()
 
     <p>For the purpose of illustration, suppose our schedule
     file <code>~/schedfile</code> lists the following lines:</p>
-
+    
     <div class="panel callout radius">
       <pre style="font-size: 0.8rem">
 hourly:src(dbhost1, 5432, scott, production, public, nations):dst()::
@@ -203,7 +203,7 @@ bluemoon:src(dbhost1, 5432, scott, production, public, orders):dst():p2015q4:o_d
       <dt>/data/loftdata/log/</dt> <dd>Stores the log files for diagnostics.</dd>
       <dt>/data/loftdata/base/</dt> <dd>This is where LOFT stores the data.</dd>
     </dl>
-
+    
     <p>When you load data, LOFT will create three levels of
       directories under <code>/data/loftdata/base</code>,
       corresponding to your database name, schema name, and table
@@ -228,13 +228,14 @@ bluemoon:src(dbhost1, 5432, scott, production, public, orders):dst():p2015q4:o_d
 	<li>/data/loftdata/base/production/public/orders/orders.xsql</li>
       </ul>
     </p>
-
+    
   </div>
 
   <div class="large-2 medium-1 columns">
   </div>
 </div>
 
+      
 
 
 <div class="row">

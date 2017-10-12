@@ -16,9 +16,9 @@
 
 
 
-<link rel="stylesheet" href=css/app.css>
+<link rel="stylesheet" href=/css/app.css>
 
-<link rel="icon" type="image/png" href=img/favicon.png>
+<link rel="icon" type="image/png" href=/img/favicon.png>
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
@@ -34,26 +34,26 @@
     <div class="large-12 columns">
       <br/>
       <nav>
-        <a href=''><img src="img/logo.png" alt="Vitesse Data"/></a>
+        <a href=/><img src="../img/logo.png" alt="Vitesse Data"/></a>
         <span class="float-right">
       <ul class="dropdown menu" data-dropdown-menu>
           <li><a>PRODUCTS</a>
             <ul class="menu">
-              <li><a href="vitesse-db">Vitesse DB</a></li>
-              <li><a href="deepgreen-db">Deepgreen DB</a></li>
-              <li><a href="loftd">Loft Server</a></li>
+              <li><a href=/vitesse-db>Vitesse DB</a></li>
+              <li><a href=/deepgreen-db>Deepgreen DB</a></li>
+              <li><a href=/loftd>Loft Server</a></li>
             </ul>
           </li>
           <li><a>SOLUTIONS</a>
             <ul class="menu">
-              <li><a href="solution-postgres">Enhanced Postgres</a></li>
-              <li><a href="solution-data-mart">Data Mart</a></li>
-              <li><a href="solution-dw">Small 100TB Warehouse</a></li>
-              <li><a href="solution-mpp">Large Scale-Out Warehouse</a></li>
+              <li><a href=/solution-postgres>Enhanced Postgres</a></li>
+              <li><a href=/solution-data-mart>Data Mart</a></li>
+              <li><a href=/solution-dw>Small 100TB Warehouse</a></li>
+              <li><a href=/solution-mpp>Large Scale-Out Warehouse</a></li>
             </ul>
           </li>
-          <li><a href="faq">FAQ</a></li>
-          <li><a href="support">SUPPORT</a></li>
+          <li><a href=/faq>FAQ</a></li>
+          <li><a href=/support>SUPPORT</a></li>
       </ul>
         </span>
       </nav>
@@ -64,31 +64,31 @@
 
 
 
+  
 
-
-
+  
   <div class="row">
   <div class="large-12 columns">
     <ul class="sub-nav">
-
-
+      
+     
       <li class="sub-nav-title">Deepgreen&nbsp;DB</li>
-      <li class="active"><a href="deepgreen-db">Performance</a></li>
-
-      <li ><a href="deepgreen-db-gpdb-compatibility">Features</a></li>
-
-      <li ><a href="deepgreen-db-download">Download</a></li>
-      <li ><a href="deepgreen-db-beta">Beta</a></li>
+      <li class="active"><a href=/deepgreen-db>Performance</a></li>
+      
+      <li ><a href="../deepgreen-db-gpdb-compatibility">Features</a></li>
+      
+      <li ><a href="../deepgreen-db-download">Download</a></li>
+      <li ><a href="../deepgreen-db-beta">Beta</a></li>
     </ul>
   </div>
 </div>
+  
+  
 
 
 
 
-
-
-
+  
   <div class="row">
   <div class="large-8 medium-8 columns">
     <br/>
@@ -99,7 +99,7 @@
     maintaining 100% compatibility with the open source GPDB project,
     Deepgreen DB has a next-genaration query processor enhanced with
     (1) better join and aggregation algorithms, (2) new subsystem to
-    handle spills, and (3) advanced techniques that maximize CPU
+    handle spills, and (3) advanced techniques that maximize CPU 
     performance through JIT-compiled query execution, vectorized scans,
     and data-path optimization.</p>
   </div>
@@ -114,8 +114,8 @@
 
 
     <input type="hidden" name="form" value="contact-sales" />
-
-    <input type="hidden" name="_next" value="contact-sales-submission">
+    
+    <input type="hidden" name="_next" value="/contact-sales-submission">
 
     <input type="hidden" name="_subject" value="Contact-sales submission">
 
@@ -136,14 +136,14 @@
   </div>
 </div>
 
-
+  
 <div class="row">
   <div class="large-8 medium-8 columns">
-
+  
     <h3>TPC-H 10G Results</h3>
 
     <p>All 22 queries of TPC-H are measured against Greenplum DB
-    and Deepgreen DB. Q1 and Q5 are specifically graphed below for
+    and Deepgreen DB. Q1 and Q5 are specifically graphed below for 
     comparisons.</p>
 
     <br/>
@@ -162,7 +162,7 @@
 
     <p class="solution"><i class="fa fa-magic"></i> Q1: Scan and
     aggregate fact table</p>
-
+    
     <p>Q1 is a typical aggregate query running against the fact
     table. <p>
 
@@ -192,14 +192,14 @@
       <br/>
       <p class="solution"><i class="fa fa-magic"></i>
       Q5: 6-way-join</p>
-
+      
     <p>Q5 is an aggregate over a <em>snowflakey</em> 6-way hashjoin that joins the fact table
     <code>lineitem</code> table against the
     <code>orders</code> and <code>supplier</code> tables, and
       subsequently against other dimension tables. </p>
-
+      
     <p><img src="img/dg-q5.png" class="float-center"/></p>
-
+    
     <div class="panel callout radius">
     <pre style="font-size:90%">
  SELECT nation.n_name,
@@ -250,7 +250,7 @@
 
   </div>
   </div>
-
+  
   <div class="large-4 medium-4 columns" style="font-size: 90%">
     <br/>
     <div class="shade1" style="padding: 1em">

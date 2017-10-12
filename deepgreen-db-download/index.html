@@ -16,9 +16,9 @@
 
 
 
-<link rel="stylesheet" href=css/app.css>
+<link rel="stylesheet" href=/css/app.css>
 
-<link rel="icon" type="image/png" href=img/favicon.png>
+<link rel="icon" type="image/png" href=/img/favicon.png>
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
@@ -34,26 +34,26 @@
     <div class="large-12 columns">
       <br/>
       <nav>
-        <a href=''><img src="img/logo.png" alt="Vitesse Data"/></a>
+        <a href=/><img src="../img/logo.png" alt="Vitesse Data"/></a>
         <span class="float-right">
       <ul class="dropdown menu" data-dropdown-menu>
           <li><a>PRODUCTS</a>
             <ul class="menu">
-              <li><a href="vitesse-db">Vitesse DB</a></li>
-              <li><a href="deepgreen-db">Deepgreen DB</a></li>
-              <li><a href="loftd">Loft Server</a></li>
+              <li><a href=/vitesse-db>Vitesse DB</a></li>
+              <li><a href=/deepgreen-db>Deepgreen DB</a></li>
+              <li><a href=/loftd>Loft Server</a></li>
             </ul>
           </li>
           <li><a>SOLUTIONS</a>
             <ul class="menu">
-              <li><a href="solution-postgres">Enhanced Postgres</a></li>
-              <li><a href="solution-data-mart">Data Mart</a></li>
-              <li><a href="solution-dw">Small 100TB Warehouse</a></li>
-              <li><a href="solution-mpp">Large Scale-Out Warehouse</a></li>
+              <li><a href=/solution-postgres>Enhanced Postgres</a></li>
+              <li><a href=/solution-data-mart>Data Mart</a></li>
+              <li><a href=/solution-dw>Small 100TB Warehouse</a></li>
+              <li><a href=/solution-mpp>Large Scale-Out Warehouse</a></li>
             </ul>
           </li>
-          <li><a href="faq">FAQ</a></li>
-          <li><a href="support">SUPPORT</a></li>
+          <li><a href=/faq>FAQ</a></li>
+          <li><a href=/support>SUPPORT</a></li>
       </ul>
         </span>
       </nav>
@@ -64,33 +64,33 @@
 
 
 
+  
 
-
-
+  
   <div class="row">
   <div class="large-12 columns">
     <ul class="sub-nav">
-
-
+      
+     
       <li class="sub-nav-title">Deepgreen&nbsp;DB</li>
-      <li ><a href="deepgreen-db">Performance</a></li>
-
-      <li ><a href="deepgreen-db-gpdb-compatibility">Features</a></li>
-
-      <li class="active"><a href="deepgreen-db-download">Download</a></li>
-      <li ><a href="deepgreen-db-beta">Beta</a></li>
+      <li ><a href=/deepgreen-db>Performance</a></li>
+      
+      <li ><a href="../deepgreen-db-gpdb-compatibility">Features</a></li>
+      
+      <li class="active"><a href="../deepgreen-db-download">Download</a></li>
+      <li ><a href="../deepgreen-db-beta">Beta</a></li>
     </ul>
   </div>
 </div>
+  
+  
 
 
 
 
-
-
-
+  
   <div class="row">
-
+  
   <div class="large-1 medium-1 columns">
     <br/>
   </div>
@@ -107,10 +107,10 @@
       </tbody>
     </table>
   </div>
-
+      
   <div class="large-3 medium-1 columns">
   </div>
-</div>
+</div>     
 
 
 <div class="row">
@@ -131,13 +131,13 @@
 	<div class="panel callout radius">
 	  <pre>% bash THE-BIN-FILE-YOU-DOWNLOADED</pre>
 	</div>
-
+	
 	<p>The installation script will install the Deepgreen DB in
 	the current directory and create a simple symlink
 	<code>deepgreendb</code> to point to it.</p>
-
+        
   </div>
-
+        
   <div class="large-3 medium-1 columns">
   </div>
 </div>
@@ -221,7 +221,7 @@ QE_CONNECT_FACTOR=5
 
 HEREHERE
 
-% # Finally, run gpinitsystem
+% # Finally, run gpinitsystem 
 % gpinitsystem -c cluster.conf -h hostfile
 
 </pre>
@@ -237,7 +237,7 @@ HEREHERE
   <div class="large-1 medium-1 columns">
     <br/>
   </div>
-
+  
   <div class="large-8 medium-10 columns">
      <br/>
      <h3>Run Some Tests</h3>
@@ -262,41 +262,41 @@ test=# create table tt as
     distributed by (i);
 SELECT 1000000
 test=# show vitesse.version;
-                vitesse.version
+                vitesse.version                 
 ------------------------------------------------
  Deepgreen DB 16.05 [rev 2c302da on 2016-05-08]
 (1 row)
 
-test=# \timing on
+test=# \timing on 
 Timing is on.
 test=# set vitesse.enable=0;
 SET
 Time: 1.799 ms
 test=# select count(*), sum(i), avg(i) from tt;
-  count  |     sum      |   avg
+  count  |     sum      |   avg    
 ---------+--------------+----------
  1000000 | 500000500000 | 500000.5
 (1 row)
 
-Time: 439.994 ms
+Time: 439.994 ms 
 test=# set vitesse.enable=1;
 SET
 Time: 1.814 ms
 test=# select count(*), sum(i), avg(i) from tt;
-  count  |     sum      |   avg
+  count  |     sum      |   avg    
 ---------+--------------+----------
  1000000 | 500000500000 | 500000.5
 (1 row)
 
 Time: 16.965 ms
 test=# select 439/17;
- ?column?
+ ?column? 
 ----------
        25
 (1 row)
 
 Time: 2.577 ms
-test=#
+test=# 
 </pre>
 
         </div>
