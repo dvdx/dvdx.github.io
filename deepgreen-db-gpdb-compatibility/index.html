@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="description" content="Vitesse DB is PostgreSQL for BI/OLAP/Data Warehouse/DataMart. Runs postgres more than 180X faster. Scans at 15&#43;GB/s. Utilizes LLVM JIT, multi-core parallel query execution, column store.">
+
+<meta name="keywords" content="DW data-warehouse data-mart BI olap analytics.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.min.css">
+
+<link href='https://fonts.googleapis.com/css?family=Inconsolata+Pontano+Sans|Abel' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<link rel="canonical" href="http://cktan.us/vitessehugo/deepgreen-db-gpdb-compatibility/">
+
+<link rel="stylesheet" href=http://cktan.us/vitessehugo/css/app.css>
+
+<link rel="icon" type="image/png" href=http://cktan.us/vitessehugo/img/favicon.png>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+
+
+
+<title>Deepgreen Db Gpdb Compatibility</title>
+
+</head>
+<body>
+<header>
+  <div class="row">
+    <div class="large-12 columns">
+      <br/>
+      <nav>
+        <a href='http://cktan.us/vitessehugo/'><img src="http://cktan.us/vitessehugo/img/logo.png" alt="Vitesse Data"/></a>
+        <span class="float-right">
+      <ul class="dropdown menu" data-dropdown-menu>
+          <li><a>PRODUCTS</a>
+            <ul class="menu">
+              <li><a href="http://cktan.us/vitessehugo/vitesse-db">Vitesse DB</a></li>
+              <li><a href="http://cktan.us/vitessehugo/deepgreen-db">Deepgreen DB</a></li>
+              <li><a href="http://cktan.us/vitessehugo/loftd">Loft Server</a></li>
+            </ul>
+          </li>
+          <li><a>SOLUTIONS</a>
+            <ul class="menu">
+              <li><a href="http://cktan.us/vitessehugo/solution-postgres">Enhanced Postgres</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-data-mart">Data Mart</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-dw">Small 100TB Warehouse</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-mpp">Large Scale-Out Warehouse</a></li>
+            </ul>
+          </li>
+          <li><a href="http://cktan.us/vitessehugo/faq">FAQ</a></li>
+          <li><a href="http://cktan.us/vitessehugo/support">SUPPORT</a></li>
+      </ul>
+        </span>
+      </nav>
+      <br/>
+    </div>
+  </div>
+</header>
+
+
+
+<div class="row">
+  <div class="large-12 columns">
+    <ul class="sub-nav">
+
+
+      <li class="sub-nav-title">Deepgreen&nbsp;DB</li>
+      <li ><a href="http://cktan.us/vitessehugo/deepgreen-db">Performance</a></li>
+
+      <li class="active"
+      ><a href="http://cktan.us/vitessehugo/deepgreen-db-gpdb-compatibility">Features</a></li>
+
+      <li ><a href="http://cktan.us/vitessehugo/deepgreen-db-download">Download</a></li>
+      <li ><a href="http://cktan.us/vitessehugo/deepgreen-db-beta">Beta</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="large-3 medium-3 columns">
+
+  <ul class="left-nav">
+
+
+
+  <li class="active">
+    <a href="http://cktan.us/vitessehugo/deepgreen-db-gpdb-compatibility">100% GPDB</a>
+  </li>
+  <li >
+    <a href="http://cktan.us/vitessehugo/deepgreen-db-decimal">Fast Decimal</a>
+  </li>
+  <li >
+    <a href="http://cktan.us/vitessehugo/deepgreen-db-json">JSON</a>
+  </li>
+  <li >
+    <a href="http://cktan.us/vitessehugo/deepgreen-db-z">Compression</a></li>
+  <li >
+  <a href="http://cktan.us/vitessehugo/deepgreen-db-sample">Sampling</a></li>
+
+</ul>
+
+
+  </div>
+  <div class="large-9 medium-9 columns">
+
+        <h3>100% Compatible with Greenplum DB</h3>
+
+<p>Deepgreen DB is derived from the open source Greenplum DB
+  project. It maintains 100% compatibility with Greenplum DB.
+  From SQL and stored procedures syntax, to storage formats on
+  disk, to operation utilities such as <code>gpstart</code>
+  or <code>gpfdist</code>, Deepgreen DB ensures full compatibility
+  to minimize effort in redeployment. In particular:</p>
+
+<p>
+  <ul style='padding-left: 2em'>
+  <li>No need to reload data, except the case when <code>quicklz</code> is in use.</li>
+  <li>No changes to SQL code (both DML and DDL).</li>
+  <li>No changes to stored procedure code.</li>
+  <li>No changes to user-defined function code.</li>
+  <li>No changes to connectivity and authentication protocols such as odbc and jdbc.</li>
+  <li>No changes to operational scripts such as bash backup scripts and cron jobs.</li>
+  </ul>
+</p>
+
+<h3>What is the difference, then?</h3>
+
+<p>In a word: <em style='font-size: 150%; color:
+          orange'>Speed.</em></p>
+
+<p>For most OLAP workload that is CPU-bound,
+  Deepgreen DB runs up to 3X faster than Greenplum DB on
+  average.</p>
+
+
+
+  </div>
+</div>
+<div class="row">
+  <div class="large-12 columns">
+    <br/><br/>
+  </div>
+</div>
+<footer>
+  <div class="row">
+    <div class="large-12 columns">
+      <hr/>
+      <p class='text-center'>Copyright &copy; 2016 Vitesse Data, Inc.<br/><br/></p>
+    </div>
+  </div>
+</footer>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.min.js">
+</script>
+
+<script>
+  $(document).foundation();
+</script>
+
+
+</body>
+</html>

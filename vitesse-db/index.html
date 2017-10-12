@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="description" content="Vitesse DB is PostgreSQL for BI/OLAP/Data Warehouse/DataMart. Runs postgres more than 180X faster. Scans at 15&#43;GB/s. Utilizes LLVM JIT, multi-core parallel query execution, column store.">
+
+<meta name="keywords" content="DW data-warehouse data-mart BI olap analytics.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.min.css">
+
+<link href='https://fonts.googleapis.com/css?family=Inconsolata+Pontano+Sans|Abel' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<link rel="canonical" href="http://cktan.us/vitessehugo/vitesse-db/">
+
+<link rel="stylesheet" href=http://cktan.us/vitessehugo/css/app.css>
+
+<link rel="icon" type="image/png" href=http://cktan.us/vitessehugo/img/favicon.png>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+
+
+
+<title>Vitesse Db</title>
+
+</head>
+<body>
+<header>
+  <div class="row">
+    <div class="large-12 columns">
+      <br/>
+      <nav>
+        <a href='http://cktan.us/vitessehugo/'><img src="http://cktan.us/vitessehugo/img/logo.png" alt="Vitesse Data"/></a>
+        <span class="float-right">
+      <ul class="dropdown menu" data-dropdown-menu>
+          <li><a>PRODUCTS</a>
+            <ul class="menu">
+              <li><a href="http://cktan.us/vitessehugo/vitesse-db">Vitesse DB</a></li>
+              <li><a href="http://cktan.us/vitessehugo/deepgreen-db">Deepgreen DB</a></li>
+              <li><a href="http://cktan.us/vitessehugo/loftd">Loft Server</a></li>
+            </ul>
+          </li>
+          <li><a>SOLUTIONS</a>
+            <ul class="menu">
+              <li><a href="http://cktan.us/vitessehugo/solution-postgres">Enhanced Postgres</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-data-mart">Data Mart</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-dw">Small 100TB Warehouse</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-mpp">Large Scale-Out Warehouse</a></li>
+            </ul>
+          </li>
+          <li><a href="http://cktan.us/vitessehugo/faq">FAQ</a></li>
+          <li><a href="http://cktan.us/vitessehugo/support">SUPPORT</a></li>
+      </ul>
+        </span>
+      </nav>
+      <br/>
+    </div>
+  </div>
+</header>
+
+
+
+
+
+
+    <div class="row">
+    <div class="large-12 columns">
+      <ul class="sub-nav">
+
+
+        <li class="sub-nav-title">Vitesse&nbsp;DB</li>
+        <li class="active" >
+          <a href="http://cktan.us/vitessehugo/vitesse-db">Performance</a></li>
+        <li >
+          <a href="http://cktan.us/vitessehugo/vitesse-db-benefits">Benefits&nbsp;&amp;&nbsp;Features</a></li>
+        <li>
+          <a href="http://cktan.us/vitessehugo/vitesse-db-benefits#usecases">Use&nbsp;Cases</a></li>
+        <li >
+          <a href="http://cktan.us/vitessehugo/vitesse-db-download">Download</a></li>
+        <li >
+          <a href="http://cktan.us/vitessehugo/vitesse-db-docs">Docs</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+
+
+
+
+  <div class="row">
+  <div class="large-8 medium-8 columns">
+    <br/>
+
+    <p>Vitesse DB is a PostgreSQL OLAP solution, designed for
+    data mart and data warehouse workload. To validate the performance
+    of Vitesse DB Enterprise Edition under such workloads, we measured
+    using the Transaction Processing Performance Council’s TPC-H
+    benchmark at scale factor 100. </p>
+
+    <p>All 22 queries of TPC-H are measured against vanilla PostgreSQL
+    and Vitesse DB Enterprise Edition using both row and column
+    stores. We call out Q1 and Q5 specifically because they are rather
+    common in a data warehouse environment.</p>
+
+    <br/>
+
+    <ul class="tabs" data-tabs id="vitessedb-perf-tab">
+      <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Q1</a></li>
+      <li class="tabs-title"><a href="#panel2">Q5</a></li>
+      <li class="tabs-title"><a href="#panel3">Row Result</a></li>
+      <li class="tabs-title"><a href="#panel4">Column Result</a></li>
+
+    </ul>
+
+  <div class="tabs-content" data-tabs-content="vitessedb-perf-tab">
+  <div class="tabs-panel is-active" id="panel1">
+
+    <br/>
+    <p class="solution"><i class="fa fa-magic"></i>
+    Scan and agg on 81 GB table can be done in 5 seconds.</p>
+
+    <p>Q1 is a typical aggregate query running against the fact table. In
+    this case, the fact table <code>lineitem</code> has 600 million
+    rows and occupies 81GB on disk. Q1 scans the table and produce
+    4 sums, 3 averages, and 1 count aggregates. Note that the filter
+      only disqualifies ~2% of the rows in the table.</p>
+
+
+
+    <p><img src="img/vdb-q1.png" class="float-center"/></p>
+
+    <div class="panel callout radius">
+      <pre style="font-size:90%">
+ SELECT lineitem.l_returnflag,
+    lineitem.l_linestatus,
+    sum(lineitem.l_quantity) AS sum_qty,
+    sum(lineitem.l_extendedprice) AS sum_base_price,
+    sum(lineitem.l_extendedprice * (1 - lineitem.l_discount)) AS sum_disc_price,
+    sum(lineitem.l_extendedprice * (1 - lineitem.l_discount) * (1 + lineitem.l_tax)) AS sum_charge,
+    avg(lineitem.l_quantity) AS avg_qty,
+    avg(lineitem.l_extendedprice) AS avg_price,
+    avg(lineitem.l_discount) AS avg_disc,
+    count(*) AS count_order
+   FROM lineitem
+  WHERE lineitem.l_shipdate <= ('1998-12-01'::date - '112 days'::interval)
+  GROUP BY lineitem.l_returnflag, lineitem.l_linestatus;</pre>
+    </div>
+    </div>
+
+
+    <div class="tabs-panel" id="panel2">
+
+      <br/>
+      <p class="solution"><i class="fa fa-magic"></i>
+      6-way-join involving 100 GB of data can be done in 12 seconds.</p>
+
+    <p>Q5 is an aggregate over a <em>snowflakey</em> 6-way hashjoin that joins the fact table
+    <code>lineitem</code> table against the
+    <code>orders</code> and <code>supplier</code> tables, and
+      subsequently against other dimension tables. </p>
+
+    <p><img src="img/vdb-q5.png" class="float-center"/></p>
+
+    <div class="panel callout radius">
+    <pre style="font-size:90%">
+ SELECT nation.n_name,
+    sum(lineitem.l_extendedprice * (1 - lineitem.l_discount)) AS revenue
+   FROM customer, orders, lineitem, supplier, nation, region
+  WHERE customer.c_custkey = orders.o_custkey
+    AND lineitem.l_orderkey = orders.o_orderkey
+    AND lineitem.l_suppkey = supplier.s_suppkey
+    AND customer.c_nationkey = supplier.s_nationkey
+    AND supplier.s_nationkey = nation.n_nationkey
+    AND nation.n_regionkey = region.r_regionkey
+    AND region.r_name = 'AMERICA'
+    AND orders.o_orderdate >= '1994-01-01'
+    AND orders.o_orderdate < ('1994-01-01'::date + '1 year'::interval)
+  GROUP BY nation.n_name;</pre>
+    </div>
+    </div>
+
+
+    <div class="tabs-panel" id="panel3">
+      <p><br/><strong>Raw result: PG vs Vitesse DB using Heap Tables</strong></p>
+    <pre style="font-size:90%">
+
+ Q      PG   VDB-Row  Speedup
+ 1    510.8     4.7    108.5
+ 2     98.5     6.2     15.8
+ 3    296.8    20.7     14.3
+ 4    408.9    26.9     15.2
+ 5    320.7    11.6     27.5
+ 6    122.5     5.0     24.7
+ 7    732.0    42.3     17.3
+ 8    288.1    14.1     20.4
+ 9  10000.0   102.8     97.3
+10    355.1    49.1      7.2
+11     60.2     4.4     13.8
+12    186.9    21.9      8.6
+13    275.4    24.1     11.4
+14    128.2     9.1     14.1
+15    251.3    12.7     19.8
+16     54.0     6.1      8.9
+17    688.2    66.8     10.3
+18    540.2    34.4     15.7
+19    169.9     9.5     17.9
+20    318.5    26.1     12.2
+21  10000.0    96.5    103.6
+22    107.7    13.1      8.2 </pre>
+    </div>
+
+    <div class="tabs-panel" id="panel4">
+<p><br/><strong>Raw result: PG vs Vitesse DB using Column Store</strong></p>
+    <pre style="font-size:90%">
+
+ Q      PG   VDB-Col  Speedup
+ 1    510.8     2.7    189.8
+ 2     98.5     5.4     18.3
+ 3    296.8    20.3     14.7
+ 4    408.9    28.0     14.6
+ 5    320.7    10.4     30.7
+ 6    122.5     1.1    110.4
+ 7    732.0    57.1     12.8
+ 8    288.1     6.7     43.1
+ 9  10000.0   105.9     94.4
+10    355.1    45.7      7.8
+11     60.2     2.9     21.0
+12    186.9    19.8      9.4
+13    275.4    23.9     11.5
+14    128.2     5.8     22.2
+15    251.3     8.7     28.8
+16     54.0     5.5      9.8
+17    688.2    64.5     10.7
+18    540.2    35.4     15.2
+19    169.9     9.0     18.9
+20    318.5    25.9     12.3
+21  10000.0    97.9    102.2
+22    107.7    13.7      7.8</pre>
+    </div>
+
+  </div>
+  </div>
+
+  <div class="large-4 medium-4 columns" style="font-size: 90%">
+    <br/>
+    <div class="shade1" style="padding: 1em">
+    <p><i class="fa fa-wrench" style="font-size:300%; color: orange;"></i></p>
+
+    <dl>
+      <dt>Machine</dt> <dd>Single HP ProLiant DL380.</dd>
+      <dt>CPU</dt> <dd>2 count Intel® Xeon® CPU E5-2670 @ 2.60GHz,
+  8-core, 20MB-cache.</dd>
+      <dt>Memory</dt> <dd>256GB.</dd>
+      <dt>DLL Modifications</dt> <dd>
+      <ul style="margin-left: 2em">
+      <li>Changed CHAR(1) types to Postgres ENUM type.</li>
+      <li>Changed NUMERIC type where appropriate to MONEY type.</li>
+      <li>Changed NUMERIC type where appropriate to DOUBLE
+      PRECISION.</li>
+      </ul>
+    </dl>
+    </div>
+
+    <br/>
+
+    <div class="shade2" style="padding:1em">
+
+
+    <p><i class="fa fa-info-circle" style="font-size: 300%; color: orange;"></i> Note
+    that it is not exactly fair to compare Vitesse DB
+      Enterprise Edition against PostgreSQL. This is because Vitesse DB
+    is able to fully employ all 16 cores on the machine, while
+    PostgreSQL is only able to utilize a single core, leaving the
+    other 15 idle. In an OLTP environment, one could argue that the
+    idle cores would be consumed by other transactions. In an OLAP
+    environment, however, there usually are not many concurrent
+    transactions, and it would be unwise to underuse hardware.</p>
+
+    <p>In addition to using more cores, Vitesse DB runs a lot more
+    efficiently in each core due to its LLVM JIT and data path optimization
+    technologies. In concert, these techniques are well suited for
+    OLAP workload and the result speaks for itself.</p>
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="row">
+  <div class="large-12 columns">
+    <br/><br/>
+  </div>
+</div>
+<footer>
+  <div class="row">
+    <div class="large-12 columns">
+      <hr/>
+      <p class='text-center'>Copyright &copy; 2016 Vitesse Data, Inc.<br/><br/></p>
+    </div>
+  </div>
+</footer>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.min.js">
+</script>
+
+<script>
+  $(document).foundation();
+</script>
+
+
+</body>
+</html>

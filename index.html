@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.29" />
+
+<meta charset="utf-8">
+<meta name="description" content="Vitesse DB is PostgreSQL for BI/OLAP/Data Warehouse/DataMart. Runs postgres more than 180X faster. Scans at 15&#43;GB/s. Utilizes LLVM JIT, multi-core parallel query execution, column store.">
+
+<meta name="keywords" content="DW data-warehouse data-mart BI olap analytics.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.min.css">
+
+<link href='https://fonts.googleapis.com/css?family=Inconsolata+Pontano+Sans|Abel' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<link rel="canonical" href="http://cktan.us/vitessehugo/">
+
+<link rel="stylesheet" href=http://cktan.us/vitessehugo/css/app.css>
+
+<link rel="icon" type="image/png" href=http://cktan.us/vitessehugo/img/favicon.png>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+
+
+<link rel="stylesheet" href="owl-carousel/owl.carousel.css">
+
+
+<link rel="stylesheet" href="owl-carousel/owl.theme.css">
+
+<style>
+  #sss {
+    font-size: 2rem;
+    font-family: sans-serif;
+
+  }
+
+  #sss strong {
+    border-bottom: double #00f000;
+    font-weight: normal;
+  }
+
+  #splash1 {
+    color: white;
+    background-image: url("img/lighttunnel.jpg");
+    background-image: url("img/lioness.jpg");
+    background-position: center;
+    background-size: cover;
+
+  }
+
+  #splash1 p {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin: auto;
+    width: 20em;
+  }
+
+  #splash1 a {
+    color: white;
+  }
+
+  #splash2 {
+    color: white;
+    background-image: url("img/londonstreet.png");
+    background-position: center;
+    background-size: cover;
+  }
+
+  #splash2 p {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin: auto;
+    width: 15em;
+  }
+
+  div.tech {
+    background-image: url("img/bamboo.jpeg");
+    background-position: center;
+    background-size: cover;
+    color: white;
+  }
+
+
+  @media screen and (max-width: 600px) {
+    #sss {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+
+
+<title>Vitesse Data | Home page</title>
+
+</head>
+<body>
+<header>
+  <div class="row">
+    <div class="large-12 columns">
+      <br/>
+      <nav>
+        <a href='http://cktan.us/vitessehugo/'><img src="http://cktan.us/vitessehugo/img/logo.png" alt="Vitesse Data"/></a>
+        <span class="float-right">
+      <ul class="dropdown menu" data-dropdown-menu>
+          <li><a>PRODUCTS</a>
+            <ul class="menu">
+              <li><a href="http://cktan.us/vitessehugo/vitesse-db">Vitesse DB</a></li>
+              <li><a href="http://cktan.us/vitessehugo/deepgreen-db">Deepgreen DB</a></li>
+              <li><a href="http://cktan.us/vitessehugo/loftd">Loft Server</a></li>
+            </ul>
+          </li>
+          <li><a>SOLUTIONS</a>
+            <ul class="menu">
+              <li><a href="http://cktan.us/vitessehugo/solution-postgres">Enhanced Postgres</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-data-mart">Data Mart</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-dw">Small 100TB Warehouse</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-mpp">Large Scale-Out Warehouse</a></li>
+            </ul>
+          </li>
+          <li><a href="http://cktan.us/vitessehugo/faq">FAQ</a></li>
+          <li><a href="http://cktan.us/vitessehugo/support">SUPPORT</a></li>
+      </ul>
+        </span>
+      </nav>
+      <br/>
+    </div>
+  </div>
+</header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="row">
+    <div id="sss" class="owl-carousel">
+      <div id="splash1" class="text-center">
+        <br/><br/><br/><br/><br/> <br/><br/>
+
+        <p style="">
+	  <a href="deepgreen-db">
+	Announcing <strong>Deepgreen DB 16.16</strong><br/>
+        <span style="font-size:90%; line-height: 90%">an accelerated GPDB for your data
+        warehouse<br/>
+        &hellip; because speed is life.</a></p>
+        <br/>
+      </div>
+<!--
+      <div id="splash2" class="text-center">
+        <br/><br/><br/><br/><br/>
+        <p style="">
+        Red light? Green waves!<br/>
+        GPDB is about to get<br/><strong>WAY FASTER</strong><br/>
+        with Deepgreen DB
+        </p>
+        <br/>
+      </div>
+-->
+    </div>
+</div>
+
+
+<div class="row">
+  <div class="large-7 columns">
+    <br/>
+    <h4>Latest News</h4>
+
+    <p><strong>Apr 6, 2017</strong> <br/> Deepgreen DB 16.16 is
+      out. Major improvements include: better optimization of hash
+      tables, ZStandard compression for column store, and a new SAMPLE
+      keyword for SQL SELECT. Deepgreen DB 16.16 performance has been
+      significantly enhanced as a result of these optimization; it is
+      approximately 15% faster than Deepgreen DB 16.15 when running
+      the full suite of TPC-H 10G.
+      <a href='deepgreen-db'>[more]</a></p>
+
+    <p><strong>Aug 14, 2016</strong> <br/> Vitesse DB 9.5.3.S
+      is available for download; runs TPCH-Q1 up to 8X faster than Postgres 9.5.3.
+      <a href='vitesse-db'>[more]</a></p>
+
+    <p><strong>May 9, 2016</strong> <br/> Deepgreen DB 16.05 is
+      out; now with Fast Decimal, JSON type and faster column store using
+      LZ4 compression algorithm. <a href='deepgreen-db'>[more]</a></p>
+
+    <p><strong>Mar 19, 2016</strong> <br/>
+      PgDay Asia 2016 talk: Data Warehouse in a PG / Greenplum / Vitesse DB Environment.
+      <a href='https://goo.gl/639q5z'>[slides]</a> </p>
+
+    <p><strong>April 28, 2015</strong> <br/>South Bay PostgreSQL Meetup talk:
+    <a
+    href='http://www.meetup.com/postgresql-1/events/221039792/'>100%
+    Postgres, 100X Faster for Analytics.</a> <a
+    href='http://goo.gl/Mtg2W6'>[slides]</a> </p>
+
+    <p><strong>March 23, 2015</strong> <br/>Announcing the release of Vitesse
+    DB, a PostgreSQL 9.3 derivative optimized for big workload. TPCH
+    Q1 runs up to 180X faster.<br/><br/></p>
+  </div>
+  <div class="large-5 columns text-center">
+    <br/>
+    <h4>Customers</h4>
+    <p>
+    <img src="img/c-adobe.png" style="padding: 1em"/>
+    <img src="img/c-huawei.png" style="padding:1em"/>
+    <img src="img/c-upwork.png" style="padding: 1em "/>
+    <img src="img/c-migu.jpg" style="padding: 1em "/>
+    <img src="img/c-guojin.jpg" style="padding: 1em "/>
+    </p>
+  </div>
+</div>
+
+<div class="row tech">
+  <div class="large-12 medium-12 columns">
+    <br/><br/>
+    <h4 class="text-center" style="font-size:200%">Our Technology</h4>
+    <p class="text-center"><img src="img/tech.png" /></p>
+    <br/>
+  </div>
+</div>
+<div class="row" style="background: #17232A; color: white">
+  <div class="large-3 columns">
+    <br/><br/>
+    <p><img src="img/speedlimit.png" style="padding: 1em"/></p>
+  </div>
+  <div class="large-6 columns">
+    <div>
+    <br><br/>
+    <h4>About Vitesse Data</h4>
+
+    <p>Vitesse Data is a start-up with deep data expertise.</p>
+
+    <p>Most relational databases are still optimizing for I/O while
+       the world grapples with powerful machines that come with lots
+       of memory, fast SSD arrays, and hundreds of underutilized
+       cores. It is not uncommon to find data systems on machines with
+       more memory than the total size of the data. Software
+       innovations, such as column-store and compression techniques,
+       have only served to exacerbate the imbalance.</p>
+
+    <p>In view of the new landscape, we created Vitesse Engine &mdash;
+      a robust data processing kernel designed to unleash the power of
+      modern x86 CPUs. By fastening Vitesse Engine onto open source
+      databases, we formulate supercharged solutions that are many
+      times more performant, and yet, retain 100% compatibility with
+      the open source projects.</p>
+
+      <br/>
+    </div>
+  </div>
+  <div class="large-3 columns">
+    <br/><br/>
+    <h4>Contact Us</h4>
+    <p><i class='fa fa-envelope-o'></i>
+      info@vitessedata.com<br/>
+      <i class='fa fa-twitter'></i> @vitessedata</p>
+
+    <p><a href="https://twitter.com/vitessedata"
+    class="twitter-follow-button" data-show-count="false"
+    data-size="large" data-show-screen-name="false">Follow
+    @vitessedata</a></p>
+
+    <p>
+<script>!function(d,s,id){var
+      js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document,
+      'script', 'twitter-wjs');</script></p>
+
+    <p><a href="http://cktan.us/vitessehugo/
+team"><i class="fa fa-users"></i> Team</a></p>
+
+  </div>
+</div>
+
+<script src="owl-carousel/owl.carousel.js"></script>
+<script>
+    $(document).ready(function() {
+      $("#sss").owlCarousel({
+
+        slideSpeed : 300,
+        paginationSpeed : 400,
+        singleItem:true,
+        autoPlay: 10000
+
+        // "singleItem:true" is a shortcut for:
+        // items : 1,
+        // itemsDesktop : false,
+        // itemsDesktopSmall : false,
+        // itemsTablet: false,
+        // itemsMobile : false
+
+      });
+    });
+</script>
+
+
+
+<div class="row">
+  <div class="large-12 columns">
+    <br/><br/>
+  </div>
+</div>
+<footer>
+  <div class="row">
+    <div class="large-12 columns">
+      <hr/>
+      <p class='text-center'>Copyright &copy; 2016 Vitesse Data, Inc.<br/><br/></p>
+    </div>
+  </div>
+</footer>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.min.js">
+</script>
+
+<script>
+  $(document).foundation();
+</script>
+
+
+</body>
+</html>

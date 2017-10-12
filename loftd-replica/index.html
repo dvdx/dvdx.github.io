@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="description" content="Vitesse DB is PostgreSQL for BI/OLAP/Data Warehouse/DataMart. Runs postgres more than 180X faster. Scans at 15&#43;GB/s. Utilizes LLVM JIT, multi-core parallel query execution, column store.">
+
+<meta name="keywords" content="DW data-warehouse data-mart BI olap analytics.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.min.css">
+
+<link href='https://fonts.googleapis.com/css?family=Inconsolata+Pontano+Sans|Abel' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<link rel="canonical" href="http://cktan.us/vitessehugo/loftd-replica/">
+
+<link rel="stylesheet" href=http://cktan.us/vitessehugo/css/app.css>
+
+<link rel="icon" type="image/png" href=http://cktan.us/vitessehugo/img/favicon.png>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+
+
+
+<title>Loftd Replica</title>
+
+</head>
+<body>
+<header>
+  <div class="row">
+    <div class="large-12 columns">
+      <br/>
+      <nav>
+        <a href='http://cktan.us/vitessehugo/'><img src="http://cktan.us/vitessehugo/img/logo.png" alt="Vitesse Data"/></a>
+        <span class="float-right">
+      <ul class="dropdown menu" data-dropdown-menu>
+          <li><a>PRODUCTS</a>
+            <ul class="menu">
+              <li><a href="http://cktan.us/vitessehugo/vitesse-db">Vitesse DB</a></li>
+              <li><a href="http://cktan.us/vitessehugo/deepgreen-db">Deepgreen DB</a></li>
+              <li><a href="http://cktan.us/vitessehugo/loftd">Loft Server</a></li>
+            </ul>
+          </li>
+          <li><a>SOLUTIONS</a>
+            <ul class="menu">
+              <li><a href="http://cktan.us/vitessehugo/solution-postgres">Enhanced Postgres</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-data-mart">Data Mart</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-dw">Small 100TB Warehouse</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-mpp">Large Scale-Out Warehouse</a></li>
+            </ul>
+          </li>
+          <li><a href="http://cktan.us/vitessehugo/faq">FAQ</a></li>
+          <li><a href="http://cktan.us/vitessehugo/support">SUPPORT</a></li>
+      </ul>
+        </span>
+      </nav>
+      <br/>
+    </div>
+  </div>
+</header>
+
+
+
+
+    <div class="row">
+      <div class="large-12 columns">
+        <ul class="sub-nav">
+
+          <li class="sub-nav-title">Loft Server</li>
+          <li ><a href="http://cktan.us/vitessehugo/loftd">Setup</a></li>
+          <li ><a href="http://cktan.us/vitessehugo/loftd-loading">Loading&nbsp;Data</a></li>
+          <li ><a href="http://cktan.us/vitessehugo/loftd-ddl">Table&nbsp;Definition</a></li>
+          <li class="active"><a href="http://cktan.us/vitessehugo/loftd-replica">Replication</a></li>
+          <li ><a href="http://cktan.us/vitessehugo/loftd-download">Download</a></li>
+
+        </ul>
+      </div>
+    </div>
+
+
+
+        <div class="row">
+  <div class="large-1 medium-1 columns">
+    <br/>
+  </div>
+
+  <div class="large-9 medium-10 columns">
+    <br/>
+    <p>If you have multiple instances of LOFT running, you can make
+      one the master and use the <code>loftpush</code> program to keep
+      the others in sync with the master. From the master host, run
+      the command below to push local changes to a remote LOFT
+      instance:</p>
+
+    <div class="panel callout radius">
+      <pre>% loftpush -d /data/loftdata/base http://my-other-loft-host:8787</pre>
+    </div>
+
+    <p>This tool is especially handy if you need to multiple LOFT stores on AWS.</p>
+
+  </div>
+
+  <div class="large-2 medium-1 columns">
+  </div>
+</div>
+
+
+
+
+
+<div class="row">
+  <div class="large-12 columns">
+    <br/><br/>
+  </div>
+</div>
+<footer>
+  <div class="row">
+    <div class="large-12 columns">
+      <hr/>
+      <p class='text-center'>Copyright &copy; 2016 Vitesse Data, Inc.<br/><br/></p>
+    </div>
+  </div>
+</footer>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.min.js">
+</script>
+
+<script>
+  $(document).foundation();
+</script>
+
+
+</body>
+</html>

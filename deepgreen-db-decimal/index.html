@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="description" content="Vitesse DB is PostgreSQL for BI/OLAP/Data Warehouse/DataMart. Runs postgres more than 180X faster. Scans at 15&#43;GB/s. Utilizes LLVM JIT, multi-core parallel query execution, column store.">
+
+<meta name="keywords" content="DW data-warehouse data-mart BI olap analytics.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.min.css">
+
+<link href='https://fonts.googleapis.com/css?family=Inconsolata+Pontano+Sans|Abel' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<link rel="canonical" href="http://cktan.us/vitessehugo/deepgreen-db-decimal/">
+
+<link rel="stylesheet" href=http://cktan.us/vitessehugo/css/app.css>
+
+<link rel="icon" type="image/png" href=http://cktan.us/vitessehugo/img/favicon.png>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+
+
+
+<title>Deepgreen Db Decimal</title>
+
+</head>
+<body>
+<header>
+  <div class="row">
+    <div class="large-12 columns">
+      <br/>
+      <nav>
+        <a href='http://cktan.us/vitessehugo/'><img src="http://cktan.us/vitessehugo/img/logo.png" alt="Vitesse Data"/></a>
+        <span class="float-right">
+      <ul class="dropdown menu" data-dropdown-menu>
+          <li><a>PRODUCTS</a>
+            <ul class="menu">
+              <li><a href="http://cktan.us/vitessehugo/vitesse-db">Vitesse DB</a></li>
+              <li><a href="http://cktan.us/vitessehugo/deepgreen-db">Deepgreen DB</a></li>
+              <li><a href="http://cktan.us/vitessehugo/loftd">Loft Server</a></li>
+            </ul>
+          </li>
+          <li><a>SOLUTIONS</a>
+            <ul class="menu">
+              <li><a href="http://cktan.us/vitessehugo/solution-postgres">Enhanced Postgres</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-data-mart">Data Mart</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-dw">Small 100TB Warehouse</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-mpp">Large Scale-Out Warehouse</a></li>
+            </ul>
+          </li>
+          <li><a href="http://cktan.us/vitessehugo/faq">FAQ</a></li>
+          <li><a href="http://cktan.us/vitessehugo/support">SUPPORT</a></li>
+      </ul>
+        </span>
+      </nav>
+      <br/>
+    </div>
+  </div>
+</header>
+
+
+
+<div class="row">
+  <div class="large-12 columns">
+    <ul class="sub-nav">
+
+
+      <li class="sub-nav-title">Deepgreen&nbsp;DB</li>
+      <li ><a href="http://cktan.us/vitessehugo/deepgreen-db">Performance</a></li>
+
+      <li
+      class="active"
+      ><a href="http://cktan.us/vitessehugo/deepgreen-db-gpdb-compatibility">Features</a></li>
+
+      <li ><a href="http://cktan.us/vitessehugo/deepgreen-db-download">Download</a></li>
+      <li ><a href="http://cktan.us/vitessehugo/deepgreen-db-beta">Beta</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="large-3 medium-3 columns">
+
+  <ul class="left-nav">
+
+
+
+  <li >
+    <a href="http://cktan.us/vitessehugo/deepgreen-db-gpdb-compatibility">100% GPDB</a>
+  </li>
+  <li class="active">
+    <a href="http://cktan.us/vitessehugo/deepgreen-db-decimal">Fast Decimal</a>
+  </li>
+  <li >
+    <a href="http://cktan.us/vitessehugo/deepgreen-db-json">JSON</a>
+  </li>
+  <li >
+    <a href="http://cktan.us/vitessehugo/deepgreen-db-z">Compression</a></li>
+  <li >
+  <a href="http://cktan.us/vitessehugo/deepgreen-db-sample">Sampling</a></li>
+
+</ul>
+
+
+  </div>
+  <div class="large-9 medium-9 columns">
+
+        <h3>Decimal64 / Decimal128</h3>
+
+<p><em>New in version 16.04.</em></p>
+
+<p>Deepgreen DB includes a new set of arbitrary precision decimal
+types that are more efficient than the native postgres <code>Numeric</code>
+type. These are the <code>Decimal64</code> and <code>Decimal128</code>
+types that have 16-digit and 34-digit precisions respectively.</p>
+
+<h4>Installation</h4>
+
+<p>After installing the Deepgreen DB bin file, execute the
+following commands on your Deepgreen DB host to install the
+decimal64 and decimal128 types and functions into the database.</p>
+
+<div class="panel callout radius">
+  <pre>% source deepgreendb/greenplum_path.sh
+% cd $GPHOME/share/postgresql/contrib/
+% psql your-database -f pg_decimal.sql</pre>
+</div>
+
+<h4>Performance</h4>
+
+<p>We can now do some exercise to demonstrate the performance
+    characteristics of these types. The session below shows that
+    the simple query <code>select avg(x), sum(2*x) from table</code>
+    over a million records takes:
+
+    <ul style="margin-left: 2em">
+      <li> 23 ms when x is 64-bit float;</li>
+      <li> 38 ms when x is decimal64;</li>
+      <li> 60 ms when x is decimal128;</li>
+      <li> 86 ms when x is numeric with vitesse engine;</li>
+      <li> 206 ms when x is numeric without vitesse engine;</li>
+      <li> Conclusion: for this query, decimal64 is more than 2x faster than
+    numeric types on Deepgreen, and 5x faster than numeric types on GPDB.</li>
+    </ul>
+
+</p>
+
+<div class="panel callout radius">
+      <pre>
+% psql test
+test=# drop table if exists tt;
+DROP TABLE
+test=# create table tt(
+ii bigint,
+ f64 double precision,
+d64 decimal64,
+d128 decimal128,
+n numeric(15, 3))
+distributed randomly;
+CREATE TABLE
+test=# insert into tt
+select i,
+    i + 0.123,
+    (i + 0.123)::decimal64,
+    (i + 0.123)::decimal128,
+    i + 0.123
+from generate_series(1, 1000000) i;
+INSERT 0 1000000
+test=# \timing on
+Timing is on.
+test=# select count(*) from tt;
+count
+---------
+ 1000000
+(1 row)
+
+Time: 16.929 ms
+test=# set vitesse.enable=1;
+SET
+Time: 1.888 ms
+test=# select avg(f64),sum(2*f64) from tt;
+   avg       |       sum
+-----------------+------------------
+ 500000.62300062 | 1000001246001.24
+(1 row)
+
+Time: 22.867 ms
+test=# select avg(d64),sum(2*d64) from tt;
+avg     |        sum
+------------+-------------------
+ 500000.623 | 1000001246000.000
+(1 row)
+
+Time: 37.752 ms
+test=# select avg(d128),sum(2*d128) from tt;
+avg     |        sum
+------------+-------------------
+ 500000.623 | 1000001246000.000
+(1 row)
+
+Time: 60.480 ms
+test=# set vitesse.enable=1;
+SET
+Time: 1.704 ms
+test=# select avg(n),sum(2*n) from tt;
+     avg         |        sum
+---------------------+-------------------
+ 500000.623000000000 | 1000001246000.000
+(1 row)
+
+Time: 86.086 ms
+test=# set vitesse.enable=0;
+SET
+Time: 1.633 ms
+test=# select avg(n),sum(2*n) from tt;
+     avg         |        sum
+---------------------+-------------------
+ 500000.623000000000 | 1000001246000.000
+(1 row)
+
+Time: 206.458 ms</pre>
+    </div>
+
+
+  </div>
+</div>
+<div class="row">
+  <div class="large-12 columns">
+    <br/><br/>
+  </div>
+</div>
+<footer>
+  <div class="row">
+    <div class="large-12 columns">
+      <hr/>
+      <p class='text-center'>Copyright &copy; 2016 Vitesse Data, Inc.<br/><br/></p>
+    </div>
+  </div>
+</footer>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.min.js">
+</script>
+
+<script>
+  $(document).foundation();
+</script>
+
+
+</body>
+</html>

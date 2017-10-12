@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="description" content="Vitesse DB is PostgreSQL for BI/OLAP/Data Warehouse/DataMart. Runs postgres more than 180X faster. Scans at 15&#43;GB/s. Utilizes LLVM JIT, multi-core parallel query execution, column store.">
+
+<meta name="keywords" content="DW data-warehouse data-mart BI olap analytics.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.min.css">
+
+<link href='https://fonts.googleapis.com/css?family=Inconsolata+Pontano+Sans|Abel' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<link rel="canonical" href="http://cktan.us/vitessehugo/deepgreen-db-download/">
+
+<link rel="stylesheet" href=http://cktan.us/vitessehugo/css/app.css>
+
+<link rel="icon" type="image/png" href=http://cktan.us/vitessehugo/img/favicon.png>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+
+
+
+<title>Deepgreen Db Download</title>
+
+</head>
+<body>
+<header>
+  <div class="row">
+    <div class="large-12 columns">
+      <br/>
+      <nav>
+        <a href='http://cktan.us/vitessehugo/'><img src="http://cktan.us/vitessehugo/img/logo.png" alt="Vitesse Data"/></a>
+        <span class="float-right">
+      <ul class="dropdown menu" data-dropdown-menu>
+          <li><a>PRODUCTS</a>
+            <ul class="menu">
+              <li><a href="http://cktan.us/vitessehugo/vitesse-db">Vitesse DB</a></li>
+              <li><a href="http://cktan.us/vitessehugo/deepgreen-db">Deepgreen DB</a></li>
+              <li><a href="http://cktan.us/vitessehugo/loftd">Loft Server</a></li>
+            </ul>
+          </li>
+          <li><a>SOLUTIONS</a>
+            <ul class="menu">
+              <li><a href="http://cktan.us/vitessehugo/solution-postgres">Enhanced Postgres</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-data-mart">Data Mart</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-dw">Small 100TB Warehouse</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-mpp">Large Scale-Out Warehouse</a></li>
+            </ul>
+          </li>
+          <li><a href="http://cktan.us/vitessehugo/faq">FAQ</a></li>
+          <li><a href="http://cktan.us/vitessehugo/support">SUPPORT</a></li>
+      </ul>
+        </span>
+      </nav>
+      <br/>
+    </div>
+  </div>
+</header>
+
+
+
+
+
+
+  <div class="row">
+  <div class="large-12 columns">
+    <ul class="sub-nav">
+
+
+      <li class="sub-nav-title">Deepgreen&nbsp;DB</li>
+      <li ><a href="http://cktan.us/vitessehugo/deepgreen-db">Performance</a></li>
+
+      <li ><a href="http://cktan.us/vitessehugo/deepgreen-db-gpdb-compatibility">Features</a></li>
+
+      <li class="active"><a href="http://cktan.us/vitessehugo/deepgreen-db-download">Download</a></li>
+      <li ><a href="http://cktan.us/vitessehugo/deepgreen-db-beta">Beta</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+
+
+  <div class="row">
+
+  <div class="large-1 medium-1 columns">
+    <br/>
+  </div>
+
+  <div class="large-8 medium-10 columns">
+    <br/>
+    <table class="download">
+      <thead>
+        <tr><th>OS</th><th>Version</th><th>Build</th><th>Link</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Redhat 6</td><td>16.20</td><td>170905</td><td><a href="http://storage.googleapis.com/vitessedata/download/deepgreendb.16.20.rh6.x86_64.170905.bin">deepgreendb.16.20.rh6.x86_64.170905.bin</a></td></tr>
+<tr><td>Ubuntu 14</td><td>16.20</td><td>170905</td><td><a href="http://storage.googleapis.com/vitessedata/download/deepgreendb.16.20.ubuntu14.x86_64.170905.bin">deepgreendb.16.20.ubuntu14.x86_64.170905.bin</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="large-3 medium-1 columns">
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="large-1 medium-1 columns">
+    <br/>
+  </div>
+
+  <div class="large-8 medium-10 columns">
+    <br/>
+    <h3>Install</h3>
+
+
+    <p>The file you downloaded is a <code>.bin</code> file that can be executed
+    directly with bash. </p>
+
+    <p>Execute the .bin script to install Deepgreen DB:</p>
+
+	<div class="panel callout radius">
+	  <pre>% bash THE-BIN-FILE-YOU-DOWNLOADED</pre>
+	</div>
+
+	<p>The installation script will install the Deepgreen DB in
+	the current directory and create a simple symlink
+	<code>deepgreendb</code> to point to it.</p>
+
+  </div>
+
+  <div class="large-3 medium-1 columns">
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="large-1 medium-1 columns">
+    <br/>
+  </div>
+
+  <div class="large-8 medium-10 columns">
+    <br/>
+    <h3>Initializing the DB</h3>
+
+    <p>To verify that the installation was successful, we will
+	create an instance and start the service.</p>
+
+    <div class="panel callout radius">
+	  <pre>
+% # Source the env
+% source deepgreendb/greenplum_path.sh
+
+% # Create data directories for master and 2 segments
+% sudo mkdir /dbfast{0,1,2}
+% sudo chown $USER /dbfast{0,1,2}
+
+% # Create the hostfile
+% echo localhost > hostfile
+
+% # Create cluster.conf file
+% cat > cluster.conf &lt;&lt;&lt;HEREHERE
+
+# Set this to anything you like
+ARRAY_NAME="mpp1 cluster"
+CLUSTER_NAME="mpp1 cluster"
+
+# This file must exist in the same directory that you execute gpinitsystem in
+MACHINE_LIST_FILE=hostfile
+
+# This names the data directories for the Segment Instances and the Entry Postmaster
+SEG_PREFIX=dg
+
+# Prefix for script created database
+DATABASE_PREFIX=dg
+
+# This is the port at which to contact the resulting Greenplum database, e.g.
+#   psql -p $PORT_BASE -d template1
+PORT_BASE=25432
+
+
+# Array of data locations for each hosts Segment Instances, the number of directories in this array will
+# set the number of segment instances per host
+declare -a DATA_DIRECTORY=(/dbfast1 /dbfast2)
+
+# Name of host on which to setup the QD
+MASTER_HOSTNAME=localhost
+
+# Name of directory on that host in which to setup the QD
+MASTER_DIRECTORY=/dbfast0
+MASTER_PORT=15432
+
+# Hosts to allow to connect to the QD (and Segment Instances)
+# By default, allow everyone to connect (0.0.0.0/0)
+IP_ALLOW=0.0.0.0/0
+
+# Shell to use to execute commands on all hosts
+TRUSTED_SHELL=/usr/bin/ssh
+
+CHECK_POINT_SEGMENTS=8
+
+ENCODING=UNICODE
+
+export MASTER_DATA_DIRECTORY
+export TRUSTED_SHELL
+
+# Keep max_connection settings to reasonable values for
+# installcheck good execution.
+
+DEFAULT_QD_MAX_CONNECT=25
+QE_CONNECT_FACTOR=5
+
+HEREHERE
+
+% # Finally, run gpinitsystem
+% gpinitsystem -c cluster.conf -h hostfile
+
+</pre>
+	</div>
+    </div>
+
+  <div class="large-3 medium-1 columns">
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="large-1 medium-1 columns">
+    <br/>
+  </div>
+
+  <div class="large-8 medium-10 columns">
+     <br/>
+     <h3>Run Some Tests</h3>
+
+      <p>Now we can have some fun!</p>
+
+      <div class="panel callout radius">
+	  <pre>
+% # Source the env if this is a new shell
+% source deepgreendb/greenplum_path.sh
+
+% # We set up the DB on port 15432
+% export PGPORT=15432
+
+% # Create Test DB
+% createdb test
+
+% psql test
+test=# create table tt as
+    select i::bigint as i, i::double precision as f
+    from generate_series(1, 1000000) i
+    distributed by (i);
+SELECT 1000000
+test=# show vitesse.version;
+                vitesse.version
+------------------------------------------------
+ Deepgreen DB 16.05 [rev 2c302da on 2016-05-08]
+(1 row)
+
+test=# \timing on
+Timing is on.
+test=# set vitesse.enable=0;
+SET
+Time: 1.799 ms
+test=# select count(*), sum(i), avg(i) from tt;
+  count  |     sum      |   avg
+---------+--------------+----------
+ 1000000 | 500000500000 | 500000.5
+(1 row)
+
+Time: 439.994 ms
+test=# set vitesse.enable=1;
+SET
+Time: 1.814 ms
+test=# select count(*), sum(i), avg(i) from tt;
+  count  |     sum      |   avg
+---------+--------------+----------
+ 1000000 | 500000500000 | 500000.5
+(1 row)
+
+Time: 16.965 ms
+test=# select 439/17;
+ ?column?
+----------
+       25
+(1 row)
+
+Time: 2.577 ms
+test=#
+</pre>
+
+        </div>
+    </div>
+  <div class="large-3 medium-1 columns">
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="large-12 columns">
+    <br/><br/>
+  </div>
+</div>
+<footer>
+  <div class="row">
+    <div class="large-12 columns">
+      <hr/>
+      <p class='text-center'>Copyright &copy; 2016 Vitesse Data, Inc.<br/><br/></p>
+    </div>
+  </div>
+</footer>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.min.js">
+</script>
+
+<script>
+  $(document).foundation();
+</script>
+
+
+</body>
+</html>

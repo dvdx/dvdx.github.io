@@ -1,0 +1,241 @@
+html {
+    color: #535353;
+}
+
+body {
+    font-family: 'Pontano Sans', sans-serif;
+    font-size: 1.1rem;
+    color: #535353;
+    background: white;
+}
+
+header nav a {
+    font-family: 'Abel', sans-serif;
+    font-size: 1.2rem;
+}
+
+
+h1, h2, h3, h4 {
+    font-family: 'Abel', sans-serif;
+    text-transform: uppercase;
+}
+
+h2 {
+    border-top: 1px solid gainsboro;
+    padding-top: 0.3rem;
+}
+
+
+hr {
+    color: gainsboro;
+}
+
+footer {
+    font-size: 0.9rem;
+}
+
+.download td,th {
+    font-size: 1.05rem;
+}
+
+@media screen and (max-width: 640px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+h3 {
+    padding-top: 1em;
+    border-bottom: 1px solid gainsboro;
+}
+
+/* sub-nav */
+
+ul.sub-nav {
+  background-color: #f2f2f2;
+  padding: 0.2em 0.5em 0.2em 0;
+  font-size: 1rem;
+}
+.sub-nav li {
+    color: #999999;
+    padding-left: 1.2rem;
+    display: inline;
+}
+.sub-nav li.active a {
+    border-radius: 3px;
+    background: #008CBA;
+    color: #fff;
+    cursor: default;
+    font-weight: normal;
+    padding: 0.2rem 0.6rem;
+}
+.sub-nav li.sub-nav-title {
+    font-size: 2rem;
+    font-family: 'Abel', sans-serif;
+    text-transform: uppercase;
+    color: #535353;
+    padding: 0 1rem;
+}
+
+/* left-nav */
+ul.left-nav {
+  background-color: #f2f2f2;
+  padding: 1rem;
+  font-size: 1rem;
+  list-style: none;
+}
+
+.left-nav li {
+    color: #999999;
+}
+.left-nav li a {
+    padding: 0.2rem 1rem;
+}
+
+.left-nav li.active a {
+    border-radius: 3px;
+    background: #008CBA;
+    color: #fff;
+    cursor: default;
+    font-weight: normal;
+}
+
+
+.bigshadow {
+    font-size: 5rem;
+    color: #e2e2e2;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 500px) {
+    .bigshadow {
+        font-size: 3rem;
+    }
+}
+
+
+/* for forms */
+.error {
+    color: red;
+}
+
+dl dt { margin: 0.8rem 0 0rem;  }
+
+dd { margin: 0; }
+
+
+/* for FAQ page */
+.faq ul {
+    padding-left: 1em;
+    font-size: 1.1rem;
+}
+
+.faq dd {
+    padding-left: 1em;
+    max-width: 50rem;
+}
+.faq dt {
+    padding-top: 1em;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.faq dt:first-child {
+    padding-top: 0;
+}
+
+
+
+code, pre {
+    font-size: 1rem;
+    font-family: 'Inconsolata', monospace;
+    color: #333;
+}
+
+
+
+.shade1 {
+    background: #f2efe8;
+    background: #B4C9F3;
+    background: #F1F0F1;
+}
+
+
+.shade2 {
+    background: #e8edf3;
+}
+
+
+/* for team page */
+div.team h5 {
+    font-family: 'Abel', sans-serif;
+    font-weight: normal;
+}
+
+div.team h5 strong {
+    font-size: 120%;
+    font-weight: normal;
+    /*text-transform: uppercase;*/
+}
+
+div.team p {
+    padding-bottom: 2em;
+}
+
+
+/* for solution and key benefit items */
+p.solution {
+    font-weight: bold;
+}
+
+p.solution i {
+    color: orange;
+    font-size: 200%;
+}
+
+ul.keybenefit {
+    list-style: none;
+    padding-left: 2em;
+}
+ul.keybenefit li {
+    padding-left: 1.3em;
+}
+ul.keybenefit li:before {
+    font-family:'FontAwesome';
+    content:"\f14a";
+    margin-left: -1.3em;
+    width: 1.3em;
+    display: inline-block;
+    color: #00f000;
+}
+
+/* contact-sales */
+div.contact-sales {
+    background: #e8edf3;
+    padding: 1.5em 1em 0.5em;
+}
+
+div.contact-sales h4 {
+    font-size: 1.4rem;
+    color: orange;
+}
+
+div.contact-sales p {
+    font-size: 1.2rem;
+}
+
+div.contact-sales #submit {
+    color: white;
+    background-color: orange;
+    border-radius: 5px;
+}
+
+.tabs-title>a {
+    font-family: 'Pontano Sans', sans-serif;
+    font-size: 1.1rem;
+}
+
+.tabs-title>a:focus, .tabs-title>a[aria-selected=true] {
+    color: white;
+    background: #008CBA;
+}

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="description" content="Vitesse DB is PostgreSQL for BI/OLAP/Data Warehouse/DataMart. Runs postgres more than 180X faster. Scans at 15&#43;GB/s. Utilizes LLVM JIT, multi-core parallel query execution, column store.">
+
+<meta name="keywords" content="DW data-warehouse data-mart BI olap analytics.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.min.css">
+
+<link href='https://fonts.googleapis.com/css?family=Inconsolata+Pontano+Sans|Abel' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<link rel="canonical" href="http://cktan.us/vitessehugo/solution-postgres/">
+
+<link rel="stylesheet" href=http://cktan.us/vitessehugo/css/app.css>
+
+<link rel="icon" type="image/png" href=http://cktan.us/vitessehugo/img/favicon.png>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+
+
+
+<title>Solution Postgres</title>
+
+</head>
+<body>
+<header>
+  <div class="row">
+    <div class="large-12 columns">
+      <br/>
+      <nav>
+        <a href='http://cktan.us/vitessehugo/'><img src="http://cktan.us/vitessehugo/img/logo.png" alt="Vitesse Data"/></a>
+        <span class="float-right">
+      <ul class="dropdown menu" data-dropdown-menu>
+          <li><a>PRODUCTS</a>
+            <ul class="menu">
+              <li><a href="http://cktan.us/vitessehugo/vitesse-db">Vitesse DB</a></li>
+              <li><a href="http://cktan.us/vitessehugo/deepgreen-db">Deepgreen DB</a></li>
+              <li><a href="http://cktan.us/vitessehugo/loftd">Loft Server</a></li>
+            </ul>
+          </li>
+          <li><a>SOLUTIONS</a>
+            <ul class="menu">
+              <li><a href="http://cktan.us/vitessehugo/solution-postgres">Enhanced Postgres</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-data-mart">Data Mart</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-dw">Small 100TB Warehouse</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-mpp">Large Scale-Out Warehouse</a></li>
+            </ul>
+          </li>
+          <li><a href="http://cktan.us/vitessehugo/faq">FAQ</a></li>
+          <li><a href="http://cktan.us/vitessehugo/support">SUPPORT</a></li>
+      </ul>
+        </span>
+      </nav>
+      <br/>
+    </div>
+  </div>
+</header>
+
+
+
+
+
+  <div class="row">
+    <div class="large-12 columns">
+      <ul class="sub-nav" role="navigation">
+        <li class="sub-nav-title">Solution: Enhanced Postgres</li>
+      </ul>
+    </div>
+  </div>
+
+
+
+
+
+        <div class="row">
+  <div class="large-9 medium-8 columns">
+    <br/>
+    <h4>Preamble</h4>
+
+    <p>Postgres is a popular engine behind many database-driven
+    applications today. Although most requests from the applications
+    are short and sweet, longer duration and heavier queries are a
+    fact of life that cannot be avoided. These hefty queries tend to
+    obstruct and disrupt normal operation disproportionately because
+    they perform big scan operations that:
+
+    <ul style="padding-left: 2em">
+      <li>expel hot pages from the cache,</li>
+      <li>monopolize system resources such as WAL, and</li>
+      <li>exacerbate lock contention. </li>
+    </ul>
+    </p>
+
+
+    <br/>
+    <h4>Solution</h4>
+
+    <p class="solution"><i class="fa fa-magic"></i>
+    Vitesse DB Standard Edition.</p>
+
+
+    <p>Vitesse DB Standard Edition is 100% compatible with Postgres,
+    and heavy queries run on average 2X to 3X faster. Vitesse DB will
+    free up resources sooner and shorten the window of
+    disruption. Swapping out Postgres for Vitesse DB can be
+    accomplished trivially without unload-reload of data. Customers
+    will see that their machines load graphs got <em>compressed</em>
+    after the swap (in tech-parlance, we say the database machine is
+    happier after the swap):</p>
+
+      <div class="text-center"><img src="img/loadgraph.png" /></div>
+
+
+    <br/>
+    <h4>Key Benefits</h4>
+
+    <ul class="keybenefit">
+      <li>Reports are generated in a timely manner.</li>
+      <li>Web GUI is more responsive because all queries run faster
+    when the machine is less loaded.</li>
+      <li>Hardware replacement cycle can be pushed out further.</li>
+    </ul>
+
+  </div>
+  <div class="large-3 medium-4 columns">
+    <br/>
+    <div class="contact-sales">
+  <h4>Contact Sales</h4>
+
+
+  <form name="contact-sales" method="POST" action="https://formspree.io/sales@vitessedata.com">
+
+
+    <input type="hidden" name="form" value="contact-sales" />
+
+    <input type="hidden" name="_next" value="http://cktan.us/vitessehugo/contact-sales-submission">
+
+    <input type="hidden" name="_subject" value="Contact-sales submission">
+
+    <input type="hidden" name="_format" value="plain">
+
+
+
+    <input name="Name" id="name" type="text" placeholder="Name" required/>
+
+    <input name="_replyto" id="email" type="email" placeholder="Email" required/>
+
+    <input name="company" id="company" type="text" placeholder="Company"/>
+
+    <input name="submit" id="submit" type="submit" class="button round"/>
+  </form>
+</div>
+
+  </div>
+</div>
+
+
+
+
+
+
+<div class="row">
+  <div class="large-12 columns">
+    <br/><br/>
+  </div>
+</div>
+<footer>
+  <div class="row">
+    <div class="large-12 columns">
+      <hr/>
+      <p class='text-center'>Copyright &copy; 2016 Vitesse Data, Inc.<br/><br/></p>
+    </div>
+  </div>
+</footer>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.min.js">
+</script>
+
+<script>
+  $(document).foundation();
+</script>
+
+
+</body>
+</html>

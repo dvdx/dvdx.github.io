@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="description" content="Vitesse DB is PostgreSQL for BI/OLAP/Data Warehouse/DataMart. Runs postgres more than 180X faster. Scans at 15&#43;GB/s. Utilizes LLVM JIT, multi-core parallel query execution, column store.">
+
+<meta name="keywords" content="DW data-warehouse data-mart BI olap analytics.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.min.css">
+
+<link href='https://fonts.googleapis.com/css?family=Inconsolata+Pontano+Sans|Abel' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<link rel="canonical" href="http://cktan.us/vitessehugo/loftd-loading/">
+
+<link rel="stylesheet" href=http://cktan.us/vitessehugo/css/app.css>
+
+<link rel="icon" type="image/png" href=http://cktan.us/vitessehugo/img/favicon.png>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+
+
+
+<title>Loftd Loading</title>
+
+</head>
+<body>
+<header>
+  <div class="row">
+    <div class="large-12 columns">
+      <br/>
+      <nav>
+        <a href='http://cktan.us/vitessehugo/'><img src="http://cktan.us/vitessehugo/img/logo.png" alt="Vitesse Data"/></a>
+        <span class="float-right">
+      <ul class="dropdown menu" data-dropdown-menu>
+          <li><a>PRODUCTS</a>
+            <ul class="menu">
+              <li><a href="http://cktan.us/vitessehugo/vitesse-db">Vitesse DB</a></li>
+              <li><a href="http://cktan.us/vitessehugo/deepgreen-db">Deepgreen DB</a></li>
+              <li><a href="http://cktan.us/vitessehugo/loftd">Loft Server</a></li>
+            </ul>
+          </li>
+          <li><a>SOLUTIONS</a>
+            <ul class="menu">
+              <li><a href="http://cktan.us/vitessehugo/solution-postgres">Enhanced Postgres</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-data-mart">Data Mart</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-dw">Small 100TB Warehouse</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-mpp">Large Scale-Out Warehouse</a></li>
+            </ul>
+          </li>
+          <li><a href="http://cktan.us/vitessehugo/faq">FAQ</a></li>
+          <li><a href="http://cktan.us/vitessehugo/support">SUPPORT</a></li>
+      </ul>
+        </span>
+      </nav>
+      <br/>
+    </div>
+  </div>
+</header>
+
+
+
+
+    <div class="row">
+      <div class="large-12 columns">
+        <ul class="sub-nav">
+
+          <li class="sub-nav-title">Loft Server</li>
+          <li ><a href="http://cktan.us/vitessehugo/loftd">Setup</a></li>
+          <li class="active"><a href="http://cktan.us/vitessehugo/loftd-loading">Loading&nbsp;Data</a></li>
+          <li ><a href="http://cktan.us/vitessehugo/loftd-ddl">Table&nbsp;Definition</a></li>
+          <li ><a href="http://cktan.us/vitessehugo/loftd-replica">Replication</a></li>
+          <li ><a href="http://cktan.us/vitessehugo/loftd-download">Download</a></li>
+
+        </ul>
+      </div>
+    </div>
+
+
+
+        <div class="row">
+  <div class="large-1 medium-1 columns">
+    <br/>
+  </div>
+
+  <div class="large-9 medium-10 columns">
+    <br/>
+
+    <p>The best way to load data into LOFT is through
+      the <code>pg2disk</code> utility. It uses psql to connect to a
+      Postgres, Greenplum or Deepgreen database, and download the data
+      to the local disk.</p>
+
+    <div class="panel callout radius">
+      <pre>Usage: pg2disk -c -D BASEDIR SCHEDULENAME SCHEDULEFILE</pre>
+    </div>
+
+    <p>The <code>-c</code> flag will trigger a check for another
+      active pg2disk. If there is another pg2disk running, the current
+      one will exit normally. This is useful in preventing overlapping
+      invocation of pg2disk when it is launched by a cron daemon.</p>
+
+    <p>The <code>-D</code> flag specifies the base directory of where
+      to put the data files. Continuing with our example in
+      the <a href="loftd">introduction</a>, this would
+      be <code>/data/loftdata/base</code>. </p>
+
+    <p>SCHEDULENAME is just an arbitrary job-schedule-name as
+      specified in the SCHEDULEFILE.</p>
+
+    <p>SCHEDULEFILE specifies a path to a file that has the job
+      schedules and their purposes. Each job is specified by a line in
+      the file in this format:<p>
+
+    <div class="panel callout radius">
+      <pre>schedulename:source-clause:destination-clause:pname:condition-clause</pre>
+    </div>
+
+    <p>Again, the schedulename is an arbitrary name given to identify
+      a group of jobs. For example, if we want to separate the jobs into
+      three kinds depending on how often they are invoked, we may name
+      the schedules <em>monthly</em>, <em>daily</em> and <em>hourly</em>.</p>
+
+    <p>The source-clause specifies the origin of the data. It is of
+      the form:</p>
+
+    <div class="panel callout radius">
+      <pre>src(host, port, dbuser, dbname, schema, tablename)
+
+e.g. src(dbhost1, 5432, scott, glog, public, weblog)
+</pre>
+    </div>
+
+    <p>The destination-clause specifies the target of the copy
+    operation. It allows the user to specify a different name for the
+    replica. In practice, the names are usually the same for source
+    and target, and you may leave the destination names unspecified
+    for them to default to the source name.</p>
+
+    <div class="panel callout radius">
+      <pre>dst(dbname, schema, tablename)
+
+e.g. dst(glog, public, weblog) or dst()
+</pre>
+    </div>
+
+    <p>The optional pname specifies a partition name. If unspecified,
+    it will be set to the partition named <em>default</em>.</p>
+
+    <p>The condition-clause is also optional. It lets you specify a
+    SQL WHERE filter to copy only a subset of the data.</p>
+
+    <h3>Example</h3>
+
+    <p>For the purpose of illustration, suppose our schedule
+    file <code>~/schedfile</code> lists the following lines:</p>
+
+    <div class="panel callout radius">
+      <pre style="font-size: 0.8rem">
+hourly:src(dbhost1, 5432, scott, production, public, nations):dst()::
+
+bluemoon:src(dbhost1, 5432, scott, production, public, orders):dst():p2015q1:o_date between '2015-01-01' and '2015-03-31'
+bluemoon:src(dbhost1, 5432, scott, production, public, orders):dst():p2015q2:o_date between '2015-04-01' and '2015-06-30'
+bluemoon:src(dbhost1, 5432, scott, production, public, orders):dst():p2015q3:o_date between '2015-07-01' and '2015-09-30'
+bluemoon:src(dbhost1, 5432, scott, production, public, orders):dst():p2015q4:o_date between '2015-10-01' and '2015-12-31'
+   daily:src(dbhost1, 5432, scott, production, public, orders):dst():p2016q1:o_date between '2016-01-01' and '2016-03-31'
+  hourly:src(dbhost1, 5432, scott, production, public, orders):dst():p2016q2:o_date between '2016-03-01' and '2016-06-30'
+   never:src(dbhost1, 5432, scott, production, public, orders):dst():p2016q3:o_date between '2016-07-01' and '2016-09-30'
+   never:src(dbhost1, 5432, scott, production, public, orders):dst():p2016q4:o_date between '2016-10-01' and '2016-12-31'
+</pre>
+    </div>
+
+    <p>We can invoke pg2disk on <em>hourly</em> to copy
+      the <em>nations</em> table in its entirety, and a fragment of
+      the <em>orders</em> table for the records in Q2, 2016. Note that
+      you may need to create
+      a <a href='http://www.postgresql.org/docs/9.3/static/libpq-pgpass.html'>.pgpass</a>
+      file for this to run successfully.</p>
+
+    <div class="panel callout radius">
+      <pre>% pg2disk -c -D /data/loftdata/base hourly ~/schedfile</pre>
+    </div>
+
+    <p>There is also a special name <code>__all__</code> that matches
+      all schedule names. Therefore, the following command will copy
+      all tables from the <em>production</em> database as
+      user <em>scott</em>:</p>
+
+    <div class="panel callout radius">
+      <pre>% pg2disk -c -D /data/loftdata/base __all__ ~/schedfile</pre>
+    </div>
+
+    <h3>Data Organization</h3>
+
+    <p>When you start LOFT, it will create these directories
+      under <code>/data/loftdata</code>:</p>
+
+    <dl>
+      <dt>/data/loftdata/log/</dt> <dd>Stores the log files for diagnostics.</dd>
+      <dt>/data/loftdata/base/</dt> <dd>This is where LOFT stores the data.</dd>
+    </dl>
+
+    <p>When you load data, LOFT will create three levels of
+      directories under <code>/data/loftdata/base</code>,
+      corresponding to your database name, schema name, and table
+      name. A data file will then be created per partition of the
+      table under the table directory. In addition, two sql files will
+      be created to reflect the DDL of the table for Vitesse DB and
+      Deepgreen DB.</p>
+
+    <p>For the example schedule file above, you would expect to see these files:
+
+      <ul style="margin-left: 2em">
+	<li>/data/loftdata/base/production/public/nations/default.spq</li>
+	<li>/data/loftdata/base/production/public/orders/p2015q1.spq</li>
+	<li>/data/loftdata/base/production/public/orders/p2015q2.spq</li>
+	<li>/data/loftdata/base/production/public/orders/p2015q3.spq</li>
+	<li>/data/loftdata/base/production/public/orders/p2015q4.spq</li>
+	<li>/data/loftdata/base/production/public/orders/p2016q1.spq</li>
+	<li>/data/loftdata/base/production/public/orders/p2016q2.spq</li>
+	<li>/data/loftdata/base/production/public/orders/p2016q3.spq</li>
+	<li>/data/loftdata/base/production/public/orders/p2016q4.spq</li>
+	<li>/data/loftdata/base/production/public/orders/orders.sql</li>
+	<li>/data/loftdata/base/production/public/orders/orders.xsql</li>
+      </ul>
+    </p>
+
+  </div>
+
+  <div class="large-2 medium-1 columns">
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="large-12 columns">
+    <br/><br/>
+  </div>
+</div>
+<footer>
+  <div class="row">
+    <div class="large-12 columns">
+      <hr/>
+      <p class='text-center'>Copyright &copy; 2016 Vitesse Data, Inc.<br/><br/></p>
+    </div>
+  </div>
+</footer>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.min.js">
+</script>
+
+<script>
+  $(document).foundation();
+</script>
+
+
+</body>
+</html>

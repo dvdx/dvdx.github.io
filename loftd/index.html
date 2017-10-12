@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="description" content="Vitesse DB is PostgreSQL for BI/OLAP/Data Warehouse/DataMart. Runs postgres more than 180X faster. Scans at 15&#43;GB/s. Utilizes LLVM JIT, multi-core parallel query execution, column store.">
+
+<meta name="keywords" content="DW data-warehouse data-mart BI olap analytics.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.min.css">
+
+<link href='https://fonts.googleapis.com/css?family=Inconsolata+Pontano+Sans|Abel' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<link rel="canonical" href="http://cktan.us/vitessehugo/loftd/">
+
+<link rel="stylesheet" href=http://cktan.us/vitessehugo/css/app.css>
+
+<link rel="icon" type="image/png" href=http://cktan.us/vitessehugo/img/favicon.png>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+
+
+
+<title>Loftd</title>
+
+</head>
+<body>
+<header>
+  <div class="row">
+    <div class="large-12 columns">
+      <br/>
+      <nav>
+        <a href='http://cktan.us/vitessehugo/'><img src="http://cktan.us/vitessehugo/img/logo.png" alt="Vitesse Data"/></a>
+        <span class="float-right">
+      <ul class="dropdown menu" data-dropdown-menu>
+          <li><a>PRODUCTS</a>
+            <ul class="menu">
+              <li><a href="http://cktan.us/vitessehugo/vitesse-db">Vitesse DB</a></li>
+              <li><a href="http://cktan.us/vitessehugo/deepgreen-db">Deepgreen DB</a></li>
+              <li><a href="http://cktan.us/vitessehugo/loftd">Loft Server</a></li>
+            </ul>
+          </li>
+          <li><a>SOLUTIONS</a>
+            <ul class="menu">
+              <li><a href="http://cktan.us/vitessehugo/solution-postgres">Enhanced Postgres</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-data-mart">Data Mart</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-dw">Small 100TB Warehouse</a></li>
+              <li><a href="http://cktan.us/vitessehugo/solution-mpp">Large Scale-Out Warehouse</a></li>
+            </ul>
+          </li>
+          <li><a href="http://cktan.us/vitessehugo/faq">FAQ</a></li>
+          <li><a href="http://cktan.us/vitessehugo/support">SUPPORT</a></li>
+      </ul>
+        </span>
+      </nav>
+      <br/>
+    </div>
+  </div>
+</header>
+
+
+
+
+    <div class="row">
+      <div class="large-12 columns">
+        <ul class="sub-nav">
+
+          <li class="sub-nav-title">Loft Server</li>
+          <li class="active"><a href="http://cktan.us/vitessehugo/loftd">Setup</a></li>
+          <li ><a href="http://cktan.us/vitessehugo/loftd-loading">Loading&nbsp;Data</a></li>
+          <li ><a href="http://cktan.us/vitessehugo/loftd-ddl">Table&nbsp;Definition</a></li>
+          <li ><a href="http://cktan.us/vitessehugo/loftd-replica">Replication</a></li>
+          <li ><a href="http://cktan.us/vitessehugo/loftd-download">Download</a></li>
+
+        </ul>
+      </div>
+    </div>
+
+
+
+        <div class="row">
+  <div class="large-1 medium-1 columns">
+    <br/>
+  </div>
+
+  <div class="large-9 medium-10 columns">
+    <br/>
+
+    <p>Large Optimized Foreign Table (LOFT) is a remote column store
+      manager. It is designed specifically to facilitate replication
+      of tables from operational environment into a
+      separate analytics domain. </p>
+
+    <p>LOFT is essentially an efficient data repository that stores and
+      serves partitioned tables to Vitesse DB and Greenplum DB. It can
+      be used as a data mart to offload your data warehouse or as a
+      replica of your data on premise or in the cloud
+      <a href="http://cktan.us/vitessehugo/
+solution-data-mart">[more]</a>. For
+      small 100TB data warehouses, it can even function as
+      the primary storage.</p>
+
+    <h3>Setup Vitesse DB</h3>
+
+    <p>In order to access LOFT, we need to load an extension into
+      Vitesse DB that provides the necessary stubs. The extension is
+      included in the Vitesse DB distribution. Simply execute the
+      following commands to enable the extension:
+    </p>
+
+
+    <div class="panel callout radius">
+      <pre>% psql your-database -c 'create extension vitesse_spq_fdw'
+% psql your-database -c 'create server spq_fdw_server foreign data wrapper vitesse_spq_fdw'
+</pre>
+    </div>
+
+
+    <h3>Setup Deepgreen DB</h3>
+
+    <p>A similar setup procedure is necessary for Deepgreen DB:</p>
+
+    <div class="panel callout radius">
+      <pre>% psql your-database -f $GPHOME/share/postgresql/contrib/vitesse.sql
+</pre>
+    </div>
+
+
+    <h3>Setup LOFT</h3>
+
+    <p>LOFT and its related utilities are included in
+      Vitesse DB and Deepgreen DB distributions.</p>
+
+    <p>All you need to setup LOFT is some disk space and a network
+      port. First identify a directory on a disk that you want to
+      store the data. For the purpose of illustration, we will assume
+      that directory is <code>/data/loftdata</code>.</p>
+
+    <p>Next, we create a simple config file that specifies the port
+      that LOFT should listen for incoming requests:<p>
+
+    <div class="panel callout radius">
+      <pre>% echo "port=8787" > /data/loftdata/loftd.conf</pre>
+    </div>
+
+    <p>That's it! We are ready to start the LOFT service.</p>
+
+    <h3>Starting and Stopping</h3>
+
+    <p>The executable for LOFT is called <code>loftd</code>.</p>
+
+    <p>To start LOFT:</p>
+    <div class="panel callout radius">
+      <pre>% loftd -D /data/loftdata</pre>
+    </div>
+
+    <p>To stop LOFT, do a <code>ps</code> to find
+    the <code>loftd</code> process and kill it.</p>
+
+
+  </div>
+
+  <div class="large-2 medium-1 columns">
+  </div>
+</div>
+
+
+
+
+<div class="row">
+  <div class="large-12 columns">
+    <br/><br/>
+  </div>
+</div>
+<footer>
+  <div class="row">
+    <div class="large-12 columns">
+      <hr/>
+      <p class='text-center'>Copyright &copy; 2016 Vitesse Data, Inc.<br/><br/></p>
+    </div>
+  </div>
+</footer>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.min.js">
+</script>
+
+<script>
+  $(document).foundation();
+</script>
+
+
+</body>
+</html>
